@@ -1,6 +1,6 @@
-# STC-FRONTEND
+# Web3 UI
 
-Frontend of STC project. (Vue3 + Vite + Tailwind + Typescript + ElementPlus)
+Quick start in Web3 world
 
 ## Quick start
 
