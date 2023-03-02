@@ -5,16 +5,17 @@ import img from "@/assets/logo.png";
 import { isUrl } from "@pureadmin/utils";
 import { changeTheme, getCurrentTheme } from "@/utils/theme";
 import type { Theme } from "@/utils/theme";
+import { site } from "@/config/site";
 
 const menus = [
   { title: "Welcome", to: "/" },
   {
-    title: "Dashboard",
-    to: "/dashboard"
+    title: "Apps",
+    to: "/apps"
   },
   {
-    title: "Chat",
-    to: "/chat"
+    title: "Markets",
+    to: "/markets"
   },
   {
     title: "Docs",
@@ -37,7 +38,7 @@ onMounted(() => {
     <!-- left logo -->
     <router-link class="flex space-x-4 items-center" to="/">
       <img :src="img" alt="logo" class="rounded-lg" width="30" />
-      <h2 class="text-sm">Web3 UI</h2>
+      <h2 class="text-sm">{{ site.name }}</h2>
     </router-link>
     <!-- menus -->
     <div class="flex gap-16 font-semibold items-center text-[15px]">

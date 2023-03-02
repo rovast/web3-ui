@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { welcome } from "@/config/welcome";
+
 defineOptions({
   name: "Welcome"
 });
@@ -7,13 +9,12 @@ defineOptions({
 <template>
   <div class="text-center">
     <h1 class="text-5xl font-bold mt-[120px] dark:text-slate-200">
-      A frustratingly simple Web UI
+      {{ welcome.title }}
     </h1>
     <p
       class="py-6 text-xl max-w-[700px] mx-auto text-slate-500 dark:text-slate-400"
     >
-      Web3 UI lets you easily manage access to website resources, quickly setup
-      into presentation on your idea
+      {{ welcome.description }} DAO governance.
     </p>
     <button class="btn btn-primary">Get Started</button>
 

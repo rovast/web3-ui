@@ -2,6 +2,9 @@ import NProgress from "@/utils/progress";
 import { Router, createRouter } from "vue-router";
 import { getHistoryMode } from "./utils";
 const Layout = () => import("@/layout/index.vue");
+import { AppRoutes } from "./apps";
+import { MarketsRoutes } from "./markets";
+import { site } from "@/config/site";
 
 const routes = [
   {
@@ -22,66 +25,10 @@ const routes = [
           title: "Welcome"
         }
       },
-      {
-        path: "/dashboard",
-        name: "dashboard",
-        redirect: "/dashboard/virtual-network",
-        component: () => import("@/views/dashboard/index.vue"),
-        meta: {
-          title: "Dashboard"
-        },
-        children: [
-          {
-            path: "virtual-network",
-            name: "dashboard.virtual-network",
-            component: () =>
-              import("@/views/dashboard/virtual-network/index.vue"),
-            meta: {
-              title: "Virtual Network"
-            }
-          },
-          {
-            path: "device",
-            name: "dashboard.device",
-            component: () => import("@/views/dashboard/device/index.vue"),
-            meta: {
-              title: "Device"
-            }
-          },
-          {
-            path: "key",
-            name: "dashboard.key",
-            component: () => import("@/views/dashboard/key/index.vue"),
-            meta: {
-              title: "Key"
-            }
-          },
-          {
-            path: "billing",
-            name: "dashboard.billing",
-            component: () => import("@/views/dashboard/billing/index.vue"),
-            meta: {
-              title: "Billing"
-            }
-          },
-          {
-            path: "settings",
-            name: "dashboard.settings",
-            component: () => import("@/views/dashboard/settings/index.vue"),
-            meta: {
-              title: "Settings"
-            }
-          }
-        ]
-      },
-      {
-        path: "/chat",
-        name: "chat",
-        component: () => import("@/views/chat/index.vue"),
-        meta: {
-          title: "Chat"
-        }
-      },
+
+      AppRoutes,
+      MarketsRoutes,
+
       {
         path: "/:pathMatch(.*)*",
         name: "404 not found",
@@ -116,6 +63,7 @@ export const router: Router = createRouter({
 
 router.beforeEach((to: toRouteType, _from, next) => {
   NProgress.start();
+  window.document.title = site.name;
   next();
 });
 

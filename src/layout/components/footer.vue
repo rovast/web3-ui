@@ -2,6 +2,7 @@
 import logo from "@/assets/logo.png";
 import { BottomItems } from "@/config/bottom";
 import { ref } from "vue";
+import { site } from "@/config/site";
 
 const org = ref(BottomItems.org);
 </script>
@@ -10,7 +11,7 @@ const org = ref(BottomItems.org);
   <footer class="footer footer-center p-10">
     <div>
       <img :src="logo" alt="logo" width="50" height="50" class="rounded-lg" />
-      <p class="font-bold">Web3 UI<br />Quick start in web3 world.</p>
+      <p class="font-bold">{{ site.name }}<br />{{ site.description }}</p>
       <p>Copyright © {{ new Date().getFullYear() }} - All right reserved</p>
     </div>
     <div class="grid grid-flow-col gap-4">
