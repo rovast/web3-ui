@@ -28,3 +28,24 @@ export function getHistoryMode(): RouterHistory {
     }
   }
 }
+
+export function loadModuleRoutes(): Array<RouteConfigsTable> {
+  // load module routes
+  const modules: Record<string, any> = import.meta.glob(
+    ["./modules/**/*.ts", "!./modules/**/remaining.ts"],
+    {
+      eager: true
+    }
+  );
+
+  const moduleRotes = [];
+  Object.keys(modules).forEach(key => {
+    moduleRotes.push(modules[key].default);
+  });
+
+  moduleRotes.sort((a, b) => {
+    return a?.meta?.rank - b?.meta?.rank;
+  });
+
+  return moduleRotes;
+}

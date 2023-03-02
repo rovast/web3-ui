@@ -1,20 +1,10 @@
 import NProgress from "@/utils/progress";
 import { Router, createRouter } from "vue-router";
-import { getHistoryMode } from "./utils";
+import { getHistoryMode, loadModuleRoutes } from "./utils";
 const Layout = () => import("@/layout/index.vue");
 import { site } from "@/config/site";
 
-// load module routes
-const modules: Record<string, any> = import.meta.glob(
-  ["./modules/**/*.ts", "!./modules/**/remaining.ts"],
-  {
-    eager: true
-  }
-);
-const moduleRotes = [];
-Object.keys(modules).forEach(key => {
-  moduleRotes.push(modules[key].default);
-});
+const moduleRotes = loadModuleRoutes();
 
 const routes = [
   {

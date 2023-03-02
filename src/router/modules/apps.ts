@@ -4,7 +4,8 @@ export default {
   redirect: "/apps/hosts",
   component: () => import("@/views/apps/index.vue"),
   meta: {
-    title: "Apps"
+    title: "Apps",
+    rank: 2
   },
   children: [
     {
@@ -32,4 +33,4 @@ export default {
       }
     }
   ]
-};
+} as RouteConfigsTable;

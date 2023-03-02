@@ -6,26 +6,17 @@ import { isUrl } from "@pureadmin/utils";
 import { changeTheme, getCurrentTheme } from "@/utils/theme";
 import type { Theme } from "@/utils/theme";
 import { site } from "@/config/site";
+import { loadModuleRoutes } from "@/router/utils";
+import { HeaderItems } from "@/config/header";
 
-const menus = [
-  { title: "Welcome", to: "/" },
-  {
-    title: "Apps",
-    to: "/apps"
-  },
-  {
-    title: "Markets",
-    to: "/markets"
-  },
-  {
-    title: "Docs",
-    to: "https://github.com/rovast/web3-ui"
-  },
-  {
-    title: "Open Source",
-    to: "https://github.com/rovast/web3-ui"
-  }
-];
+const moduleMenus = loadModuleRoutes().map((route: RouteConfigsTable) => {
+  return {
+    title: route.meta.title,
+    to: route.path
+  };
+});
+
+const menus = [...moduleMenus, ...HeaderItems.menus];
 
 onMounted(() => {
   const theme: Theme = getCurrentTheme() as Theme;

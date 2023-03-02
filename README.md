@@ -52,6 +52,14 @@ You can discuss or ask for help in [discussions](https://github.com/rovast/web3-
 
 ## 😃 Develop Guidance
 
+### Config
+
+Some site configs can be found in `src/config`
+
+### Routes
+
+Add your routes in `src/router/modules` and it will be shown in top menu.
+
 ### Icons
 
 1. Search online icon on https://iconify.design/
