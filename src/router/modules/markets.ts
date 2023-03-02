@@ -1,4 +1,4 @@
-export const MarketsRoutes = {
+export default {
   path: "/markets",
   name: "markets",
   redirect: "/markets/providers",

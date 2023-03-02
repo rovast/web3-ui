@@ -2,9 +2,19 @@ import NProgress from "@/utils/progress";
 import { Router, createRouter } from "vue-router";
 import { getHistoryMode } from "./utils";
 const Layout = () => import("@/layout/index.vue");
-import { AppRoutes } from "./apps";
-import { MarketsRoutes } from "./markets";
 import { site } from "@/config/site";
+
+// load module routes
+const modules: Record<string, any> = import.meta.glob(
+  ["./modules/**/*.ts", "!./modules/**/remaining.ts"],
+  {
+    eager: true
+  }
+);
+const moduleRotes = [];
+Object.keys(modules).forEach(key => {
+  moduleRotes.push(modules[key].default);
+});
 
 const routes = [
   {
@@ -17,18 +27,7 @@ const routes = [
       title: "Home"
     },
     children: [
-      {
-        path: "/welcome",
-        name: "welcome",
-        component: () => import("@/views/welcome/index.vue"),
-        meta: {
-          title: "Welcome"
-        }
-      },
-
-      AppRoutes,
-      MarketsRoutes,
-
+      ...moduleRotes,
       {
         path: "/:pathMatch(.*)*",
         name: "404 not found",

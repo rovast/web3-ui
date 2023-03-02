@@ -1,4 +1,4 @@
-export const AppRoutes = {
+export default {
   path: "/apps",
   name: "apps",
   redirect: "/apps/hosts",
