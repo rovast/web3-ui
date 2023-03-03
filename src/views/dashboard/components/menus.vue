@@ -1,29 +1,19 @@
 <script setup lang="ts">
 const menus = [
   {
-    icon: "mdi:earth",
-    title: "Virtual Network",
-    to: { name: "dashboard.virtual-network" }
-  },
-  {
     icon: "tabler:server-2",
-    title: "Device",
-    to: { name: "dashboard.device" }
+    title: "Hosts",
+    to: { name: "apps.hosts" }
   },
   {
-    icon: "material-symbols:key",
-    title: "Security Key",
-    to: { name: "dashboard.key" }
+    icon: "healthicons:provider-fst",
+    title: "Providers",
+    to: { name: "apps.providers" }
   },
   {
-    icon: "ion:wallet-outline",
-    title: "Biling",
-    to: { name: "dashboard.billing" }
-  },
-  {
-    icon: "mdi:gear-outline",
-    title: "Settings",
-    to: { name: "dashboard.settings" }
+    icon: "simple-icons:wasmer",
+    title: "Actors",
+    to: { name: "apps.actors" }
   }
 ];
 </script>
